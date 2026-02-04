@@ -1,0 +1,5 @@
+{
+  "name": "TryOut-TKA: Tes Kemampuan Akademik",
+  "description": "A comprehensive Academic Competency Test platform featuring admin management for students, schedules, and question banks, with a secure student testing environment.",
+  "requestFramePermissions": []
+}

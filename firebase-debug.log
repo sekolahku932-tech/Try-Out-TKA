@@ -1,0 +1,307 @@
+[debug] [2026-02-04T16:29:46.751Z] ----------------------------------------------------------------------
+[debug] [2026-02-04T16:29:46.758Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ASUS\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-02-04T16:29:46.759Z] CLI Version:   15.5.1
+[debug] [2026-02-04T16:29:46.759Z] Platform:      win32
+[debug] [2026-02-04T16:29:46.759Z] Node Version:  v24.12.0
+[debug] [2026-02-04T16:29:46.759Z] Time:          Thu Feb 05 2026 00:29:46 GMT+0800 (China Standard Time)
+[debug] [2026-02-04T16:29:46.760Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\ASUS\Downloads\Mootilango
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-02-04T16:29:59.861Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-04T16:29:59.861Z] > authorizing via signed-in user (susitrisnawati188@gmail.com)
+[debug] [2026-02-04T16:29:59.863Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:29:59.864Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:29:59.865Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/try-out-tka-a2661 [none]
+[debug] [2026-02-04T16:30:00.818Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/try-out-tka-a2661 200
+[debug] [2026-02-04T16:30:00.818Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/try-out-tka-a2661 {"projectId":"try-out-tka-a2661","projectNumber":"1053467723023","displayName":"Try Out TKA","name":"projects/try-out-tka-a2661","resources":{"hostingSite":"try-out-tka-a2661"},"state":"ACTIVE","etag":"1_89aea8f2-353a-4138-9ec0-a2e4cf76dde5"}
+[info] i  Using project try-out-tka-a2661 (Try Out TKA) . 
+[info] 
+=== Dataconnect Setup
+[info] i  dataconnect: ensuring required API firebasedataconnect.googleapis.com is enabled... 
+[debug] [2026-02-04T16:30:00.838Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:00.839Z] Checked if tokens are valid: true, expires at: 1770226137645
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2026-02-04T16:30:00.841Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:00.841Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:00.841Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-04T16:30:00.841Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:30:00.845Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com [none]
+[debug] [2026-02-04T16:30:00.845Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:30:02.656Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com 200
+[debug] [2026-02-04T16:30:02.656Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com [omitted]
+[warn] !  dataconnect: missing required API sqladmin.googleapis.com. Enabling now... 
+[debug] [2026-02-04T16:30:02.659Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:02.660Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:02.661Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com:enable [none]
+[debug] [2026-02-04T16:30:02.661Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com:enable  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:30:02.668Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-04T16:30:02.669Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com [omitted]
+[warn] !  dataconnect: missing required API firebasedataconnect.googleapis.com. Enabling now... 
+[debug] [2026-02-04T16:30:02.671Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:02.672Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:02.673Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com:enable [none]
+[debug] [2026-02-04T16:30:02.673Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com:enable  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:30:04.216Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com:enable 200
+[debug] [2026-02-04T16:30:04.217Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/sqladmin.googleapis.com:enable [omitted]
+[debug] [2026-02-04T16:30:04.252Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com:enable 200
+[debug] [2026-02-04T16:30:04.252Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firebasedataconnect.googleapis.com:enable [omitted]
+[debug] [2026-02-04T16:30:14.263Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:14.264Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:14.264Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/-/services [none]
+[debug] [2026-02-04T16:30:16.382Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/-/services 200
+[debug] [2026-02-04T16:30:16.382Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/-/services {}
+[info] i  : ensuring required API cloudaicompanion.googleapis.com is enabled... 
+[debug] [2026-02-04T16:30:23.762Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:23.762Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:23.763Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudaicompanion.googleapis.com [none]
+[debug] [2026-02-04T16:30:23.763Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudaicompanion.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:30:25.378Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudaicompanion.googleapis.com 200
+[debug] [2026-02-04T16:30:25.378Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudaicompanion.googleapis.com [omitted]
+[info] +  : required API cloudaicompanion.googleapis.com is enabled 
+[debug] [2026-02-04T16:30:59.379Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:59.379Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:30:59.380Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/try-out-tka-a2661/billingInfo [none]
+[debug] [2026-02-04T16:31:01.109Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/try-out-tka-a2661/billingInfo 200
+[debug] [2026-02-04T16:31:01.109Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/try-out-tka-a2661/billingInfo {"name":"projects/try-out-tka-a2661/billingInfo","projectId":"try-out-tka-a2661","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-04T16:31:01.125Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:01.126Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:01.126Z] >>> [apiv2][query] GET https://monitoring.googleapis.com/v3/projects/try-out-tka-a2661/timeSeries/ filter=metric.type%3D%22serviceruntime.googleapis.com%2Fquota%2Fallocation%2Fusage%22+AND+metric.label.quota_metric+%3D+%22sqladmin.googleapis.com%2Ffdc_lifetime_free_trial_per_project%22&interval.endTime=2026-02-04T16%3A31%3A01.123Z&interval.startTime=2026-01-28T16%3A31%3A01.110Z
+[debug] [2026-02-04T16:31:02.958Z] <<< [apiv2][status] GET https://monitoring.googleapis.com/v3/projects/try-out-tka-a2661/timeSeries/ 200
+[debug] [2026-02-04T16:31:02.958Z] <<< [apiv2][body] GET https://monitoring.googleapis.com/v3/projects/try-out-tka-a2661/timeSeries/ {"unit":"1"}
+[info] +  dataconnect: Detected existing apps . (web) 
+[debug] [2026-02-04T16:31:03.006Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:03.006Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:03.007Z] >>> [apiv2][query] POST https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services service_id=mootilango
+[debug] [2026-02-04T16:31:03.007Z] >>> [apiv2][body] POST https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services {"name":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango"}
+[debug] [2026-02-04T16:31:06.095Z] <<< [apiv2][status] POST https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services 200
+[debug] [2026-02-04T16:31:06.096Z] <<< [apiv2][body] POST https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:06.020624748Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","verb":"create","requestedCancellation":false,"apiVersion":"v1"},"done":false}
+[debug] [2026-02-04T16:31:06.098Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:06.098Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:06.098Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 [none]
+[debug] [2026-02-04T16:31:06.492Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 200
+[debug] [2026-02-04T16:31:06.492Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:06.020624748Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","verb":"create","requestedCancellation":false,"apiVersion":"v1"},"done":false}
+[debug] [2026-02-04T16:31:06.995Z] [LRO Poller] Retrying task index 0
+[debug] [2026-02-04T16:31:06.996Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:06.996Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:06.996Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 [none]
+[debug] [2026-02-04T16:31:07.425Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 200
+[debug] [2026-02-04T16:31:07.425Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:06.020624748Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","verb":"create","requestedCancellation":false,"apiVersion":"v1"},"done":false}
+[debug] [2026-02-04T16:31:08.439Z] [LRO Poller] Retrying task index 0
+[debug] [2026-02-04T16:31:08.440Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:08.440Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:08.440Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 [none]
+[debug] [2026-02-04T16:31:08.884Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 200
+[debug] [2026-02-04T16:31:08.884Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4 {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222664610-64a021518f361-a0241833-adee58e4","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:06.020624748Z","endTime":"2026-02-04T16:31:07.401398438Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","verb":"create","requestedCancellation":false,"apiVersion":"v1"},"done":true,"response":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.Service","name":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","createTime":"2026-02-04T16:31:06.013717321Z","updateTime":"2026-02-04T16:31:06.013717321Z","uid":"b8fc6433-556c-4631-85cf-607447bfc3ca","reconciling":false,"etag":"Sn4gBfkCZOrM2oNUSFSJVtyCa8roxyGBqFC6qM1JVVI"}}
+[debug] [2026-02-04T16:31:08.889Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:08.889Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:08.889Z] >>> [apiv2][query] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask [none]
+[debug] [2026-02-04T16:31:08.889Z] >>> [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"input":{"messages":[{"content":"public","author":"USER"}]},"experienceContext":{"experience":"/appeco/firebase/fdc-schema-generator"}}
+[debug] [2026-02-04T16:31:15.944Z] <<< [apiv2][status] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask 200
+[debug] [2026-02-04T16:31:15.944Z] <<< [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"output":{"messages":[{"content":"```graphql\ntype User @table {\n  displayName: String!\n  createdAt: Timestamp!\n  email: String\n  photoUrl: String\n}\n\ntype Movie @table {\n  title: String!\n  year: Int!\n  createdAt: Timestamp!\n  summary: String\n  genres: [String]\n  runtime: Int\n}\n\ntype Watch @table {\n  user: User!\n  movie: Movie!\n  createdAt: Timestamp!\n  watchDate: Date!\n  location: String\n}\n\ntype Review @table {\n  user: User!\n  movie: Movie!\n  watch: Watch!\n  rating: Int!\n  createdAt: Timestamp!\n  updatedAt: Timestamp!\n  isPublic: Boolean!\n  reviewText: String\n}\n\ntype MovieList @table {\n  user: User!\n  name: String!\n  isPublic: Boolean!\n  createdAt: Timestamp!\n  updatedAt: Timestamp!\n  description: String\n}\n\ntype MovieListEntry @table(key: [\"movieList\", \"movie\"]) {\n  movieList: MovieList!\n  movie: Movie!\n  position: Int!\n  note: String\n}\n```\n"}]},"displayContext":{"additionalContext":{"@type":"type.googleapis.com/google.cloud.cloudaicompanion.v1main.FirebaseChatDisplayContext","firebaseFdcDisplayContext":{"schemaSyntaxError":""}}}}
+[debug] [2026-02-04T16:31:15.946Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:15.946Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:15.947Z] >>> [apiv2][query] PATCH https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main allowMissing=true&validateOnly=false
+[debug] [2026-02-04T16:31:15.947Z] >>> [apiv2][body] PATCH https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main {"name":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main","datasources":[{"postgresql":{}}],"source":{"files":[{"path":"schema.gql","content":"type User @table {\n  displayName: String!\n  createdAt: Timestamp!\n  email: String\n  photoUrl: String\n}\n\ntype Movie @table {\n  title: String!\n  year: Int!\n  createdAt: Timestamp!\n  summary: String\n  genres: [String]\n  runtime: Int\n}\n\ntype Watch @table {\n  user: User!\n  movie: Movie!\n  createdAt: Timestamp!\n  watchDate: Date!\n  location: String\n}\n\ntype Review @table {\n  user: User!\n  movie: Movie!\n  watch: Watch!\n  rating: Int!\n  createdAt: Timestamp!\n  updatedAt: Timestamp!\n  isPublic: Boolean!\n  reviewText: String\n}\n\ntype MovieList @table {\n  user: User!\n  name: String!\n  isPublic: Boolean!\n  createdAt: Timestamp!\n  updatedAt: Timestamp!\n  description: String\n}\n\ntype MovieListEntry @table(key: [\"movieList\", \"movie\"]) {\n  movieList: MovieList!\n  movie: Movie!\n  position: Int!\n  note: String\n}"}]}}
+[debug] [2026-02-04T16:31:17.633Z] <<< [apiv2][status] PATCH https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main 200
+[debug] [2026-02-04T16:31:17.633Z] <<< [apiv2][body] PATCH https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222677522-64a0215ddf707-6e7cee6e-592a2225","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:17.607022548Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main","verb":"update","requestedCancellation":false,"apiVersion":"v1"},"done":false}
+[debug] [2026-02-04T16:31:17.634Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.634Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.634Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222677522-64a0215ddf707-6e7cee6e-592a2225 [none]
+[debug] [2026-02-04T16:31:17.971Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222677522-64a0215ddf707-6e7cee6e-592a2225 200
+[debug] [2026-02-04T16:31:17.971Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222677522-64a0215ddf707-6e7cee6e-592a2225 {"name":"projects/try-out-tka-a2661/locations/us-east4/operations/operation-1770222677522-64a0215ddf707-6e7cee6e-592a2225","metadata":{"@type":"type.googleapis.com/google.firebase.dataconnect.v1.OperationMetadata","createTime":"2026-02-04T16:31:17.607022548Z","endTime":"2026-02-04T16:31:17.859810825Z","target":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango/schemas/main","verb":"update","requestedCancellation":false,"apiVersion":"v1"},"done":true}
+[debug] [2026-02-04T16:31:17.973Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.973Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.974Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.974Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:31:17.974Z] >>> [apiv2][query] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask [none]
+[debug] [2026-02-04T16:31:17.974Z] >>> [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"input":{"messages":[{"content":"Create 4 operations for an app using the instance schema with proper authentication.","author":"USER"}]},"experienceContext":{"experience":"/appeco/firebase/fdc-query-generator"},"clientContext":{"additionalContext":{"@type":"type.googleapis.com/google.cloud.cloudaicompanion.v1main.FirebaseChatRequestContext","fdcInfo":{"fdcServiceName":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","requiresQuery":true}}}}
+[debug] [2026-02-04T16:31:17.975Z] >>> [apiv2][query] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask [none]
+[debug] [2026-02-04T16:31:17.975Z] >>> [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"input":{"messages":[{"content":"Create a mutation to populate the database with some seed data.","author":"USER"}]},"experienceContext":{"experience":"/appeco/firebase/fdc-query-generator"},"clientContext":{"additionalContext":{"@type":"type.googleapis.com/google.cloud.cloudaicompanion.v1main.FirebaseChatRequestContext","fdcInfo":{"fdcServiceName":"projects/try-out-tka-a2661/locations/us-east4/services/mootilango","requiresQuery":true}}}}
+[debug] [2026-02-04T16:31:28.845Z] <<< [apiv2][status] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask 200
+[debug] [2026-02-04T16:31:28.845Z] <<< [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"output":{"messages":[{"content":"```graphql\nmutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: \"This mutation is for seeding data and is safe to expose to the public.\") {\n  user_insertMany(data: [\n    {\n      id: \"550e8400-e29b-41d4-a716-446655440000\",\n      displayName: \"demouser1\",\n      createdAt: \"2024-04-26T12:00:00Z\",\n      email: \"demouser1@example.com\",\n      photoUrl: \"https://example.com/demouser1.jpg\"\n    },\n    {\n      id: \"550e8400-e29b-41d4-a716-446655440001\",\n      displayName: \"demouser2\",\n      createdAt: \"2024-04-26T13:00:00Z\",\n      email: \"demouser2@example.com\",\n      photoUrl: \"https://example.com/demouser2.jpg\"\n    }\n  ])\n  movie_insertMany(data: [\n    {\n      id: \"650e8400-e29b-41d4-a716-446655440000\",\n      title: \"Inception\",\n      createdAt: \"2010-07-16T00:00:00Z\",\n      year: 2010,\n      genres: [\"sci-fi\", \"action\"],\n      runtime: 148,\n      summary: \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.\"\n    },\n    {\n      id: \"650e8400-e29b-41d4-a716-446655440001\",\n      title: \"The Matrix\",\n      createdAt: \"1999-03-31T00:00:00Z\",\n      year: 1999,\n      genres: [\"sci-fi\", \"action\"],\n      runtime: 136,\n      summary: \"A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.\"\n    }\n  ])\n  movieList_insertMany(data: [\n    {\n      id: \"750e8400-e29b-41d4-a716-446655440000\",\n      name: \"Sci-Fi Favorites\",\n      createdAt: \"2024-04-26T14:00:00Z\",\n      description: \"My favorite sci-fi movies\",\n      isPublic: true,\n      updatedAt: \"2024-04-26T14:00:00Z\",\n      userId: \"550e8400-e29b-41d4-a716-446655440000\"\n    },\n    {\n      id: \"750e8400-e29b-41d4-a716-446655440001\",\n      name: \"Action Packed\",\n      createdAt: \"2024-04-26T15:00:00Z\",\n      description: \"High-octane action movies\",\n      isPublic: false,\n      updatedAt: \"2024-04-26T15:00:00Z\",\n      userId: \"550e8400-e29b-41d4-a716-446655440001\"\n    }\n  ])\n  movieListEntry_insertMany(data: [\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440000\",\n      movieListId: \"750e8400-e29b-41d4-a716-446655440000\",\n      position: 1\n    },\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440001\",\n      movieListId: \"750e8400-e29b-41d4-a716-446655440001\",\n      position: 1\n    }\n  ])\n  watch_insertMany(data: [\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440000\",\n      userId: \"550e8400-e29b-41d4-a716-446655440000\",\n      createdAt: \"2024-04-26T16:00:00Z\",\n      watchDate: \"2024-04-25\",\n      location: \"Home\"\n    },\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440001\",\n      userId: \"550e8400-e29b-41d4-a716-446655440001\",\n      createdAt: \"2024-04-26T17:00:00Z\",\n      watchDate: \"2024-04-24\",\n      location: \"Theater\"\n    }\n  ])\n  review_insertMany(data: [\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440000\",\n      userId: \"550e8400-e29b-41d4-a716-446655440000\",\n      watchId: \"850e8400-e29b-41d4-a716-446655440000\",\n      createdAt: \"2024-04-26T18:00:00Z\",\n      isPublic: true,\n      rating: 5,\n      updatedAt: \"2024-04-26T18:00:00Z\",\n      reviewText: \"Amazing movie!\"\n    },\n    {\n      movieId: \"650e8400-e29b-41d4-a716-446655440001\",\n      userId: \"550e8400-e29b-41d4-a716-446655440001\",\n      watchId: \"850e8400-e29b-41d4-a716-446655440001\",\n      createdAt: \"2024-04-26T19:00:00Z\",\n      isPublic: true,\n      rating: 4,\n      updatedAt: \"2024-04-26T19:00:00Z\",\n      reviewText: \"Good movie!\"\n    }\n  ])\n}\n```","author":"model"}]},"outputDataContext":{"additionalContext":{"@type":"type.googleapis.com/google.cloud.cloudaicompanion.v1main.ChatOutputDataContext","relatedContent":{}}},"attributionContext":{"citationMetadata":{}}}
+[debug] [2026-02-04T16:31:46.386Z] <<< [apiv2][status] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask 200
+[debug] [2026-02-04T16:31:46.387Z] <<< [apiv2][body] POST https://cloudaicompanion.googleapis.com/v1beta/projects/try-out-tka-a2661/locations/global/instances/default:completeTask {"output":{"messages":[{"content":"```graphql\nmutation CreatePublicMovieList($name: String!, $description: String!) @auth(level: PUBLIC, insecureReason: \"This operation is safe to expose to the public\") {\n  movieList_insert(data: {\n    name: $name,\n    description: $description,\n    isPublic: true,\n    userId_expr: \"uuidV4()\",\n    createdAt_expr: \"request.time\",\n    updatedAt_expr: \"request.time\"\n  })\n}\n\nquery GetPublicMovieLists @auth(level: PUBLIC, insecureReason: \"This operation is safe to expose to the public\") {\n  movieLists(where: {isPublic: {eq: true}}) {\n    id\n    name\n    description\n  }\n}\n\nmutation AddMovieToList($movieListId: UUID!, $movieId: UUID!, $note: String, $position: Int!) @auth(level: USER) {\n  movieListEntry_insert(data: {\n    movieListId: $movieListId,\n    movieId: $movieId,\n    note: $note,\n    position: $position\n  })\n}\n\nquery GetMyMovieLists @auth(level: USER) {\n  movieLists(where: {userId: {eq_expr: \"auth.uid\"}}) {\n    id\n    name\n    description\n  }\n}\n```","author":"model"}]},"outputDataContext":{"additionalContext":{"@type":"type.googleapis.com/google.cloud.cloudaicompanion.v1main.ChatOutputDataContext","relatedContent":{}}},"attributionContext":{"citationMetadata":{}}}
+[info] +  Wrote dataconnect\dataconnect.yaml 
+[info] +  Wrote dataconnect\seed_data.gql 
+[info] +  Wrote dataconnect\schema\schema.gql 
+[info] +  Wrote dataconnect\example\connector.yaml 
+[info] +  Wrote dataconnect\example\queries.gql 
+[info] +  Wrote dataconnect\example\connector.yaml 
+[info] i  dataconnect: Installing the generated SDKs ... 
+[debug] [2026-02-04T16:31:46.446Z] defaultcredentials: writing to file C:\Users\ASUS\AppData\Roaming\firebase\susitrisnawati188_gmail_com_application_default_credentials.json
+[info] +  dataconnect: Installed generated SDKs for . (web) 
+[info] i  Visit https://firebase.google.com/docs/data-connect/web-sdk#react for more information on how to set up React Generated SDKs for Firebase Data Connect 
+[info] 
+=== Firestore Setup
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-02-04T16:33:07.883Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:07.883Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:07.883Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firestore.googleapis.com [none]
+[debug] [2026-02-04T16:33:07.884Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firestore.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:33:09.501Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firestore.googleapis.com 200
+[debug] [2026-02-04T16:33:09.501Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/firestore.googleapis.com [omitted]
+[info] +  firestore: required API firestore.googleapis.com is enabled 
+[debug] [2026-02-04T16:33:09.509Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:09.510Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:09.510Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases [none]
+[debug] [2026-02-04T16:33:10.356Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases 200
+[debug] [2026-02-04T16:33:10.356Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases {"databases":[{"name":"projects/try-out-tka-a2661/databases/(default)","uid":"414a0b16-7b24-4bc7-9963-a2db23f16330","createTime":"2026-02-04T15:30:51.247120Z","updateTime":"2026-02-04T15:30:51.247120Z","locationId":"asia-southeast2","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-02-04T15:33:10.440329Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"zet","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"INvpyeShwJIDMLORqMKWwJID"}]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2026-02-04T16:33:33.781Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:33.781Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:33.781Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/releases pageSize=10&pageToken=
+[debug] [2026-02-04T16:33:35.578Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/releases 200
+[debug] [2026-02-04T16:33:35.578Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/releases {"releases":[{"name":"projects/try-out-tka-a2661/releases/cloud.firestore","rulesetName":"projects/try-out-tka-a2661/rulesets/37c6320f-9246-471b-aa0e-38e88fb397db","createTime":"2026-02-04T15:31:00.974494Z","updateTime":"2026-02-04T15:32:17.028621Z"}]}
+[debug] [2026-02-04T16:33:35.579Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:35.579Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:33:35.579Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/rulesets/37c6320f-9246-471b-aa0e-38e88fb397db [none]
+[debug] [2026-02-04T16:33:37.001Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/rulesets/37c6320f-9246-471b-aa0e-38e88fb397db 200
+[debug] [2026-02-04T16:33:37.001Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/try-out-tka-a2661/rulesets/37c6320f-9246-471b-aa0e-38e88fb397db [omitted]
+[info] i  Downloaded the existing Firestore Security Rules from the Firebase console 
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2026-02-04T16:34:04.151Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:04.151Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:04.151Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:04.152Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:04.152Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2026-02-04T16:34:04.154Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2026-02-04T16:34:04.622Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2026-02-04T16:34:04.623Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2026-02-04T16:34:04.623Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2026-02-04T16:34:04.623Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/try-out-tka-a2661/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/try-out-tka-a2661/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] i  Downloaded the existing Firestore indexes from the Firebase console 
+[info] +  Wrote firebase deplopublic 
+[info] +  Wrote irestore.indexes.json 
+[info] 
+=== Genkit Setup
+[debug] [2026-02-04T16:34:19.229Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-04T16:34:19.229Z] > authorizing via signed-in user (susitrisnawati188@gmail.com)
+[debug] [2026-02-04T16:34:19.230Z] [iam] checking project try-out-tka-a2661 for permissions ["firebase.projects.get"]
+[debug] [2026-02-04T16:34:19.230Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:19.230Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:19.230Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions [none]
+[debug] [2026-02-04T16:34:19.231Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:34:19.231Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2026-02-04T16:34:20.009Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions 200
+[debug] [2026-02-04T16:34:20.010Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2026-02-04T16:34:20.010Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:20.010Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:20.011Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:20.011Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:20.011Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-04T16:34:20.011Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:34:20.013Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/runtimeconfig.googleapis.com [none]
+[debug] [2026-02-04T16:34:20.013Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/runtimeconfig.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:34:21.642Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/runtimeconfig.googleapis.com 200
+[debug] [2026-02-04T16:34:21.642Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2026-02-04T16:34:21.664Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-04T16:34:21.664Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-04T16:34:21.664Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:21.664Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:34:21.664Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2026-02-04T16:34:21.664Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com:enable  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:34:23.316Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2026-02-04T16:34:23.316Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/cloudfunctions.googleapis.com:enable [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/package.json 
+[info] +  Wrote functions/.eslintrc.js 
+[info] +  Wrote functions/tsconfig.dev.json 
+[info] +  Wrote functions/tsconfig.json 
+[info] +  Wrote functions/src/index.ts 
+[info] +  Wrote functions/.gitignore 
+[info] 
+[info] i  genkit: Installing Genkit CLI version 1.28.0
+ 
+[info] i  aiplatform: ensuring required API aiplatform.googleapis.com is enabled... 
+[debug] [2026-02-04T16:36:52.740Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:36:52.740Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:36:52.740Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com [none]
+[debug] [2026-02-04T16:36:52.740Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:36:54.778Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com 200
+[debug] [2026-02-04T16:36:54.778Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com [omitted]
+[warn] !  aiplatform: missing required API aiplatform.googleapis.com. Enabling now... 
+[debug] [2026-02-04T16:36:54.780Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:36:54.780Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:36:54.780Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com:enable [none]
+[debug] [2026-02-04T16:36:54.780Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com:enable  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:36:55.393Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com:enable 200
+[debug] [2026-02-04T16:36:55.393Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/try-out-tka-a2661/services/aiplatform.googleapis.com:enable [omitted]
+[info] i  genkit: Installing NPM packages for genkit 
+[info] +  genkit: Successfully installed NPM packages 
+[info] i  genkit: Updating tsconfig.json 
+[info] +  genkit: Successfully updated tsconfig.json 
+[info] i  genkit: Updating package.json 
+[info] +  genkit: Successfully updated package.json 
+[info] Telemetry data can be used to monitor and gain insights into your AI features. There may be a cost associated with using this feature. See https://firebase.google.com/docs/genkit/observability/telemetry-collection.
+[info] i  genkit: Generating sample file 
+[info] +  genkit: Successfully generated sample file (src/genkit-sample.ts) 
+[info] 
+[info] 
+Login to Google Cloud using:
+[info]     gcloud auth application-default login --project try-out-tka-a2661
+
+[info] Then start the Genkit developer experience by running:
+[info]     cd functions && npm run genkit:start
+[info] 
+=== Functions Setup
+[debug] [2026-02-04T16:38:25.644Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-04T16:38:25.645Z] > authorizing via signed-in user (susitrisnawati188@gmail.com)
+[debug] [2026-02-04T16:38:25.645Z] [iam] checking project try-out-tka-a2661 for permissions ["firebase.projects.get"]
+[debug] [2026-02-04T16:38:25.646Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:38:25.646Z] Checked if tokens are valid: true, expires at: 1770226137645
+[debug] [2026-02-04T16:38:25.646Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions [none]
+[debug] [2026-02-04T16:38:25.646Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions  x-goog-user-project=try-out-tka-a2661
+[debug] [2026-02-04T16:38:25.646Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2026-02-04T16:38:27.108Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions 200
+[debug] [2026-02-04T16:38:27.108Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/try-out-tka-a2661:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
