@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Plus, BookOpen, ChevronRight, FileText, Trash2, Edit3, X, 
@@ -231,7 +230,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
         </head>
         <body>
           <div class="header">
-            ${role !== 'SUPER_ADMIN' ? `<h1>${settings.schoolName}</h1>` : ''}
+            ${role !== 'ADMIN' ? `<h1>${settings.schoolName}</h1>` : ''}
             <h2>TRY OUT TES KEMAMPUAN AKADEMIK</h2>
             <div class="meta-info">
               <span>PAKET: ${activePackage.name}</span>
@@ -301,7 +300,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
     `);
     printWindow.document.close();
     
-    // Memberi waktu untuk KaTeX memproses rumus sebelum dialog print muncul
     setTimeout(() => { 
       printWindow.focus();
       printWindow.print(); 
@@ -446,7 +444,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
           ATURAN KHUSUS MATEMATIKA UNTUK ${kisiKisi.bentukSoal}:
           1. Opsi Jawaban (Perny याताan) WAJIB berjumlah TEPAT 3 item.
           2. Kunci Jawaban (correctAnswer) WAJIB terdiri atas TEPAT 2 (DUA) pernyataan yang BENAR/YA/SETUJU/SESUAI dan 1 pernyataan yang SALAH.
-          3. Gunakan format LaTeX ($ ... $) untuk semua penulisan angka pecahan, persen, atau satuan luas/volume.
+          3. Gunakan format LaTeX ($ ... $) for semua penulisan angka pecahan, persen, atau satuan luas/volume.
           4. Kalimat harus lugas dan sederhana bagi anak kelas 6 SD.
         `;
       } else if (isMCMA) {
@@ -472,7 +470,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
       ${isMath ? 'Gunakan LaTeX ($ ... $) untuk simbol matematika. URUTKAN PILIHAN JAWABAN numerik dari nilai TERKECIL ke TERBESAR.' : ''}
       
       ATURAN UMUM:
-      - Selalu gunakan LaTeX ($ ... $) untuk pecahan, contoh: $\\frac{1}{2}$.
+      - Selalu gunakan LaTeX ($ ... $) for pecahan, contoh: $\\frac{1}{2}$.
       - Teks harus mudah dipahami anak SD.`;
 
       const response = await ai.models.generateContent({
@@ -563,8 +561,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
         name: `[Pusat] ${pkg.name}`,
         isMaster: false,
         originalId: pkg.id
-      };
-      await onAddPackage(newPkg);
+      };      await onAddPackage(newPkg);
       setActiveSource('LOCAL');
       alert('Paket soal berhasil di-import!');
     } catch (err) {
@@ -683,7 +680,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
 
   const displayPackages = activeSource === 'LOCAL' ? packages : masterPackages;
   const activePackage = [...packages, ...masterPackages].find(p => String(p.id) === String(editingPackageId));
-  const isAuthorizedToEdit = activePackage && (!activePackage.isMaster || role === 'SUPER_ADMIN');
+  const isAuthorizedToEdit = activePackage && (!activePackage.isMaster || role === 'ADMIN');
 
   if (editingPackageId && activePackage) {
     const isMath = activePackage.subject === Subject.MATEMATIKA;
@@ -855,6 +852,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
                           </button>
                        </div>
                        <textarea required className="w-full px-5 py-4 bg-white border border-slate-300 rounded-2xl min-h-[120px] outline-none focus:ring-4 focus:ring-indigo-500/10 font-bold text-base shadow-sm" value={questionForm.text} onChange={(e) => setQuestionForm({...questionForm, text: e.target.value})} placeholder="Tuliskan pertanyaan utama..." />
+                       {/* Fix: questionText was undefined, changed to questionForm.text */}
                        {questionForm.text && (
                          <div className="mt-4 p-4 bg-rose-50 border border-rose-100 rounded-2xl">
                            <MathText text={questionForm.text} className="text-slate-800 font-bold text-sm" />
@@ -1126,7 +1124,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
               <div className="bg-white w-full max-w-[297mm] min-h-fit shadow-[0_0_100px_rgba(0,0,0,0.5)] p-12 flex flex-col animate-in slide-in-from-bottom-10 duration-700">
                 
                 <div className="text-center mb-8 border-b-4 border-double border-slate-900 pb-6">
-                  {role !== 'SUPER_ADMIN' && (
+                  {role !== 'ADMIN' && (
                     <h1 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-none mb-1">{settings.schoolName}</h1>
                   )}
                   <h2 className="text-xl font-bold text-slate-800 uppercase tracking-tight">TRY OUT TES KEMAMPUAN AKADEMIK</h2>
@@ -1284,28 +1282,28 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div><h3 className="text-xl font-black text-slate-800 uppercase tracking-tight">Manajemen Bank Soal</h3><p className="text-xs text-slate-500 font-bold uppercase tracking-widest mt-0.5">Pusat Distribusi Soal {role === 'SUPER_ADMIN' ? 'Nasional' : 'Lembaga'}</p></div>
+        <div><h3 className="text-xl font-black text-slate-800 uppercase tracking-tight">Manajemen Bank Soal</h3><p className="text-xs text-slate-500 font-bold uppercase tracking-widest mt-0.5">Pusat Distribusi Soal {role === 'ADMIN' ? 'Lembaga' : 'Nasional'}</p></div>
         <div className="flex bg-slate-200/50 p-1.5 rounded-2xl border border-slate-200 w-full md:w-auto">
-          <button onClick={() => setActiveSource('LOCAL')} className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black transition-all ${activeSource === 'LOCAL' ? 'bg-white text-indigo-600 shadow-md' : 'text-slate-500 hover:text-slate-700'}`}><Layout size={16} /> DATA {role === 'SUPER_ADMIN' ? 'INTERNAL' : 'SEKOLAH'}</button>
+          <button onClick={() => setActiveSource('LOCAL')} className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black transition-all ${activeSource === 'LOCAL' ? 'bg-white text-indigo-600 shadow-md' : 'text-slate-500 hover:text-slate-700'}`}><Layout size={16} /> DATA {role === 'ADMIN' ? 'SEKOLAH' : 'INTERNAL'}</button>
           <button onClick={() => setActiveSource('MASTER')} className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs font-black transition-all ${activeSource === 'MASTER' ? 'bg-white text-emerald-600 shadow-md' : 'text-slate-500 hover:text-slate-700'}`}><Database size={16} /> PUSAT SOAL NASIONAL</button>
         </div>
       </div>
-      {activeSource === 'MASTER' && role !== 'SUPER_ADMIN' && (<div className="bg-emerald-50 border border-emerald-200 p-6 rounded-[2rem] flex gap-4 items-center"><div className="p-4 bg-emerald-100 text-emerald-600 rounded-2xl"><Sparkles size={28} /></div><div><h4 className="font-black text-emerald-900 text-sm uppercase tracking-tight">Repositori Cloud Aktif</h4><p className="text-emerald-700 text-xs font-medium">Klik tombol "Import" untuk menggunakan butir soal pusat di sekolah Anda.</p></div></div>)}
+      {activeSource === 'MASTER' && role !== 'ADMIN' && (<div className="bg-emerald-50 border border-emerald-200 p-6 rounded-[2rem] flex gap-4 items-center"><div className="p-4 bg-emerald-100 text-emerald-600 rounded-2xl"><Sparkles size={28} /></div><div><h4 className="font-black text-emerald-900 text-sm uppercase tracking-tight">Repositori Cloud Aktif</h4><p className="text-emerald-700 text-xs font-medium">Klik tombol "Import" untuk menggunakan butir soal pusat di sekolah Anda.</p></div></div>)}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {displayPackages.map(pkg => (
           <div key={pkg.id} className="bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-sm flex flex-col group hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-500/5 transition-all relative overflow-hidden">
             <div className={`absolute top-0 right-0 p-4 ${pkg.isMaster ? 'text-emerald-500' : 'text-indigo-500'} opacity-10 -rotate-12 translate-x-4 -translate-y-4`}><BookOpen size={120} /></div>
-            <div className="flex justify-between items-start mb-6 relative z-10"><div className={`p-4 rounded-2xl shadow-inner ${pkg.subject === Subject.MATEMATIKA ? 'bg-orange-50 text-orange-600' : 'bg-blue-50 text-blue-600'}`}><BookOpen size={28} /></div><div className="flex gap-2">{activeSource === 'MASTER' && role !== 'SUPER_ADMIN' ? (<button disabled={isImporting === pkg.id} onClick={() => handleImport(pkg)} className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-emerald-100">{isImporting === pkg.id ? <Loader2 className="animate-spin" size={14} /> : <Database size={14} />}IMPORT</button>) : (<button onClick={() => setPackageToDelete(pkg.id)} className="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"><Trash2 size={20} /></button>)}</div></div>
+            <div className="flex justify-between items-start mb-6 relative z-10"><div className={`p-4 rounded-2xl shadow-inner ${pkg.subject === Subject.MATEMATIKA ? 'bg-orange-50 text-orange-600' : 'bg-blue-50 text-blue-600'}`}><BookOpen size={28} /></div><div className="flex gap-2">{activeSource === 'MASTER' && role !== 'ADMIN' ? (<button disabled={isImporting === pkg.id} onClick={() => handleImport(pkg)} className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-[10px] font-black uppercase transition-all shadow-lg shadow-emerald-100">{isImporting === pkg.id ? <Loader2 className="animate-spin" size={14} /> : <Database size={14} />}IMPORT</button>) : (<button onClick={() => setPackageToDelete(pkg.id)} className="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"><Trash2 size={20} /></button>)}</div></div>
             <div className="relative z-10"><h4 className="text-xl font-black text-slate-800 leading-tight mb-1 group-hover:text-indigo-600 transition-colors">{pkg.name}</h4><p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">{pkg.subject}</p></div>
             <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-50 relative z-10"><div className="flex flex-col"><span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Konten</span><span className="text-sm font-black text-slate-800">{pkg.questions.length} Butir</span></div><button onClick={() => setEditingPackageId(pkg.id)} className="flex items-center gap-2 bg-slate-900 text-white px-5 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-lg active:scale-95">Kelola Soal <ChevronRight size={14} /></button></div>
           </div>
         ))}
-        {((activeSource === 'LOCAL' && role !== 'SUPER_ADMIN') || (activeSource === 'MASTER' && role === 'SUPER_ADMIN')) && (<button onClick={() => { setPackageForm({ name: '', subject: Subject.BAHASA_INDONESIA }); setIsModalOpen(true); }} className="rounded-[2.5rem] border-4 border-dashed border-slate-200 flex flex-col items-center justify-center p-12 text-slate-400 hover:border-indigo-300 hover:text-indigo-600 transition-all bg-slate-50/50 group"><div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-sm group-hover:shadow-indigo-100 transition-all"><Plus size={32} /></div><span className="font-black text-xs uppercase tracking-[0.2em]">Tambah Paket Baru</span></button>)}
+        {((activeSource === 'LOCAL' && role !== 'ADMIN') || (activeSource === 'MASTER' && role === 'ADMIN')) && (<button onClick={() => { setPackageForm({ name: '', subject: Subject.BAHASA_INDONESIA }); setIsModalOpen(true); }} className="rounded-[2.5rem] border-4 border-dashed border-slate-200 flex flex-col items-center justify-center p-12 text-slate-400 hover:border-indigo-300 hover:text-indigo-600 transition-all bg-slate-50/50 group"><div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-sm group-hover:shadow-indigo-100 transition-all"><Plus size={32} /></div><span className="font-black text-xs uppercase tracking-[0.2em]">Tambah Paket Baru</span></button>)}
       </div>
 
       {packageToDelete && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[110] p-4">
-          <div className="bg-white rounded-3xl w-full max-w-sm shadow-2xl overflow-hidden p-8 text-center space-y-4 animate-in fade-in zoom-in duration-200">
+          <div className="bg-white rounded-3xl w-full max-sm shadow-2xl overflow-hidden p-8 text-center space-y-4 animate-in fade-in zoom-in duration-200">
             <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2">
               <AlertTriangle size={32} />
             </div>
