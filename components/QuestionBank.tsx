@@ -561,7 +561,8 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
         name: `[Pusat] ${pkg.name}`,
         isMaster: false,
         originalId: pkg.id
-      };      await onAddPackage(newPkg);
+      };
+      await onAddPackage(newPkg);
       setActiveSource('LOCAL');
       alert('Paket soal berhasil di-import!');
     } catch (err) {
@@ -852,7 +853,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
                           </button>
                        </div>
                        <textarea required className="w-full px-5 py-4 bg-white border border-slate-300 rounded-2xl min-h-[120px] outline-none focus:ring-4 focus:ring-indigo-500/10 font-bold text-base shadow-sm" value={questionForm.text} onChange={(e) => setQuestionForm({...questionForm, text: e.target.value})} placeholder="Tuliskan pertanyaan utama..." />
-                       {/* Fix: questionText was undefined, changed to questionForm.text */}
                        {questionForm.text && (
                          <div className="mt-4 p-4 bg-rose-50 border border-rose-100 rounded-2xl">
                            <MathText text={questionForm.text} className="text-slate-800 font-bold text-sm" />
@@ -1051,7 +1051,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
         {questionToDelete && (
           <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[210] p-4">
             <div className="bg-white rounded-3xl w-full max-sm shadow-2xl overflow-hidden p-8 text-center space-y-4 animate-in fade-in zoom-in duration-200">
-              <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
                 <AlertTriangle size={32} />
               </div>
               <h3 className="text-xl font-black text-slate-800 tracking-tight uppercase">Hapus Butir Soal?</h3>
@@ -1124,7 +1124,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
               <div className="bg-white w-full max-w-[297mm] min-h-fit shadow-[0_0_100px_rgba(0,0,0,0.5)] p-12 flex flex-col animate-in slide-in-from-bottom-10 duration-700">
                 
                 <div className="text-center mb-8 border-b-4 border-double border-slate-900 pb-6">
-                  {role !== 'ADMIN' && (
+                  {role === 'ADMIN' && (
                     <h1 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-none mb-1">{settings.schoolName}</h1>
                   )}
                   <h2 className="text-xl font-bold text-slate-800 uppercase tracking-tight">TRY OUT TES KEMAMPUAN AKADEMIK</h2>
@@ -1304,7 +1304,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
       {packageToDelete && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[110] p-4">
           <div className="bg-white rounded-3xl w-full max-sm shadow-2xl overflow-hidden p-8 text-center space-y-4 animate-in fade-in zoom-in duration-200">
-            <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2">
+            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
               <AlertTriangle size={32} />
             </div>
             <h3 className="text-xl font-black text-slate-800 tracking-tight uppercase">Hapus Paket Soal?</h3>
