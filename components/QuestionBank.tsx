@@ -143,7 +143,7 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
       .map((q, idx) => {
         const { title, body } = getCleanedStimulus(q.stimulus);
         const binary = isBinaryType(q.type);
-        const labels = getBinaryLabels(q.type) : null;
+        const labels = binary ? getBinaryLabels(q.type) : null;
         const answers = Array.isArray(q.correctAnswer) ? q.correctAnswer : [];
         
         const imageHtml = q.imageUrl ? `
@@ -515,18 +515,12 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
     }
   };
 
-  /**
-   * Fix for handleSortOptions errors.
-   * Sorts the options in questionForm based on their numerical value.
-   */
   const handleSortOptions = (order: 'asc' | 'desc') => {
     if (!questionForm.options) return;
     
-    // Track original indices to update correct answers correctly
     const indexedOptions = questionForm.options.map((opt, idx) => ({ opt, idx }));
     
     indexedOptions.sort((a, b) => {
-      // Numerical extraction logic, handling slashes for fractions
       const extractNum = (str: string) => {
         const match = str.replace(/[^\d./-]/g, '');
         if (!match) return 0;
@@ -547,7 +541,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
 
     const newOptions = indexedOptions.map(x => x.opt);
     
-    // Remap correct answers
     if (questionForm.type === QuestionType.MCSA) {
       const oldIdx = questionForm.correctAnswer as number;
       const newIdx = indexedOptions.findIndex(x => x.idx === oldIdx);
@@ -608,7 +601,6 @@ const QuestionBank: React.FC<QuestionBankProps> = ({
     const isMath = activePackage?.subject === Subject.MATEMATIKA;
     const isPGK = isBinaryType(newType) || newType === QuestionType.MCMA;
     
-    // Khusus matematika, jika PGK maka default tepat 3 baris
     const defaultOptionCount = (isMath && isPGK) ? 3 : (newType === QuestionType.MCSA || newType === QuestionType.MCMA) ? 5 : 3;
 
     setQuestionForm(prev => ({
