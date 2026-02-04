@@ -1,3 +1,4 @@
+
 {
   "name": "tryout-tka:-tes-kemampuan-akademik",
   "private": true,
@@ -9,12 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dataconnect/generated": "file:src/dataconnect-generated",
-    "@google/genai": "^1.38.0",
-    "firebase": "^11.3.1",
-    "lucide-react": "^0.563.0",
+    "react-dom": "^19.2.3",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "lucide-react": "^0.563.0",
+    "firebase": "^11.3.1",
+    "@google/genai": "^1.38.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

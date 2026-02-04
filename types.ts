@@ -22,6 +22,15 @@ export interface FirebaseConfig {
   appId: string;
 }
 
+export interface School {
+  id: string;
+  code: string;
+  name: string;
+  isActive: boolean;
+  createdAt: number;
+  firebaseConfig?: FirebaseConfig; // Opsional, jika kosong gunakan database pusat
+}
+
 export interface Student {
   id: string;
   name: string;
@@ -34,7 +43,6 @@ export interface Student {
   schoolId: string;
 }
 
-// Fix: Added schoolId to AdminUser to resolve property missing error
 export interface AdminUser {
   id: string;
   name: string;
@@ -42,16 +50,6 @@ export interface AdminUser {
   password: string;
   createdAt: number;
   schoolId: string;
-}
-
-// Fix: Added School interface which was missing in types and causing import errors
-export interface School {
-  id: string;
-  name: string;
-  code: string;
-  isActive: boolean;
-  createdAt: number;
-  firebaseConfig?: FirebaseConfig;
 }
 
 export interface KisiKisi {
@@ -62,6 +60,7 @@ export interface KisiKisi {
   bentukSoal?: string;
   jenisSoal?: string;
   nomorSoal: number;
+  // Tambahan untuk Matematika
   elemen?: string;
   subElemen?: string;
   levelKognitif?: string;
@@ -80,7 +79,6 @@ export interface Question {
   kisiKisi?: KisiKisi;
 }
 
-// Fix: Added isMaster and originalId to QuestionPackage to resolve property missing errors
 export interface QuestionPackage {
   id: string;
   name: string;
@@ -100,6 +98,7 @@ export interface TestSession {
   duration: number;
   sessionNumber: number;
   studentIds: string[];
+  schoolId: string;
 }
 
 export interface AppSettings {
@@ -122,4 +121,4 @@ export interface StudentProgress {
   answers: Record<string, number | number[]>;
 }
 
-export type UserRole = 'ADMIN' | 'STUDENT';
+export type UserRole = 'SUPER_ADMIN' | 'ADMIN' | 'STUDENT';
