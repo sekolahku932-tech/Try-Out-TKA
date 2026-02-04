@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LogOut, User, LayoutDashboard, GraduationCap, Calendar, BookOpen, Settings, Activity, BarChart3, FileSpreadsheet, Users2, School } from 'lucide-react';
+import { LogOut, User, LayoutDashboard, GraduationCap, Calendar, BookOpen, Settings, Activity, BarChart3, FileSpreadsheet, Users2 } from 'lucide-react';
 import { UserRole } from '../types';
 
 interface LayoutProps {
@@ -20,13 +20,6 @@ interface MenuItem {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, setActiveMenu, userName }) => {
-  const superAdminItems: MenuItem[] = [
-    { id: 'dashboard', label: 'Overview', icon: LayoutDashboard, group: 'SISTEM' },
-    { id: 'schools', label: 'Daftar Sekolah', icon: School, group: 'SISTEM' },
-    { id: 'bank', label: 'Bank Soal Pusat', icon: BookOpen, group: 'KONTEN' },
-    { id: 'settings', label: 'Pengaturan Pusat', icon: Settings, group: 'SISTEM' },
-  ];
-
   const adminMenuItems: MenuItem[] = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, group: 'UTAMA' },
     { id: 'activity', label: 'Monitoring', icon: Activity, group: 'UTAMA' },
@@ -35,8 +28,8 @@ const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, s
     { id: 'schedule', label: 'Jadwal Try Out', icon: Calendar, group: 'PELAKSANAAN' },
     { id: 'results_tka', label: 'Hasil TKA', icon: FileSpreadsheet, group: 'LAPORAN' },
     { id: 'item_analysis', label: 'Analisis Soal', icon: BarChart3, group: 'LAPORAN' },
-    { id: 'admin_users', label: 'Manajemen User', icon: Users2, group: 'SISTEM' },
-    { id: 'settings', label: 'Pengaturan', icon: Settings, group: 'SISTEM' },
+    { id: 'admin_users', label: 'Manajemen Proktor', icon: Users2, group: 'SISTEM' },
+    { id: 'settings', label: 'Pengaturan Sekolah', icon: Settings, group: 'SISTEM' },
   ];
 
   const studentMenuItems: MenuItem[] = [
@@ -47,10 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, s
   let menuItems: MenuItem[] = [];
   let groups: (string | null)[] = [];
 
-  if (role === 'SUPER_ADMIN') {
-    menuItems = superAdminItems;
-    groups = ['SISTEM', 'KONTEN'];
-  } else if (role === 'ADMIN') {
+  if (role === 'ADMIN') {
     menuItems = adminMenuItems;
     groups = ['UTAMA', 'DATA MASTER', 'PELAKSANAAN', 'LAPORAN', 'SISTEM'];
   } else {
@@ -68,7 +58,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, s
             TRYOUT-TKA
           </h1>
           <p className="text-[10px] font-black text-slate-500 mt-1 uppercase tracking-widest">
-            {role === 'SUPER_ADMIN' ? 'Central Management' : 'Assessment System'}
+            Portal Digital Sekolah
           </p>
         </div>
 
@@ -100,19 +90,17 @@ const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, s
 
         <div className="p-4 mt-auto border-t border-slate-800 bg-slate-900/50">
           <div className="flex items-center gap-3 mb-4 px-2">
-            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border ${
-              role === 'SUPER_ADMIN' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' : 'bg-indigo-500/10 border-indigo-500/20 text-indigo-400'
-            }`}>
+            <div className="w-10 h-10 rounded-2xl flex items-center justify-center border bg-indigo-500/10 border-indigo-500/20 text-indigo-400">
               <User size={20} />
             </div>
             <div className="overflow-hidden">
-              <p className="text-sm font-bold truncate text-slate-200">{userName || (role === 'SUPER_ADMIN' ? 'Super Admin' : 'Admin')}</p>
-              <p className={`text-[9px] font-black uppercase tracking-widest ${role === 'SUPER_ADMIN' ? 'text-amber-500' : 'text-slate-500'}`}>{role}</p>
+              <p className="text-sm font-bold truncate text-slate-200">{userName || 'Administrator'}</p>
+              <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">{role}</p>
             </div>
           </div>
           <button
             onClick={onLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-red-400 hover:bg-red-500/10 rounded-xl transition-all"
+            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-red-400 hover:bg-red-50/10 rounded-xl transition-all"
           >
             <LogOut size={18} />
             Logout
@@ -128,7 +116,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role, onLogout, activeMenu, s
               {menuItems.find(i => i.id === activeMenu)?.label || 'Dashboard'}
             </h2>
             <p className="text-xs font-medium text-slate-400 mt-0.5">
-              Panel Kendali • {role === 'SUPER_ADMIN' ? 'Authority Pusat' : 'Lembaga'}
+              Panel Kendali Sistem Asesmen Digital
             </p>
           </div>
           <div className="flex items-center gap-4">

@@ -18,9 +18,11 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
   const [isPrintPreview, setIsPrintPreview] = useState(false);
   const [selectedStudentForCard, setSelectedStudentForCard] = useState<Student | null>(null);
   
+  // Fix: Added gender field to formData to satisfy Student interface requirements.
   const [formData, setFormData] = useState({
     name: '',
     nisn: '',
+    gender: 'L' as 'L' | 'P',
     birthPlace: '',
     birthDate: ''
   });
@@ -39,16 +41,18 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
     }
   }, [isPrintPreview]);
 
+  // Fix: Added missing schoolId to satisfy Student interface on line 45.
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     const creds = generateStudentCredentials();
     const newStudent: Student = {
       id: Date.now().toString(),
       ...formData,
-      ...creds
+      ...creds,
+      schoolId: ''
     };
     onAdd(newStudent);
-    setFormData({ name: '', nisn: '', birthPlace: '', birthDate: '' });
+    setFormData({ name: '', nisn: '', gender: 'L', birthPlace: '', birthDate: '' });
     setIsModalOpen(false);
   };
 
@@ -101,6 +105,10 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
         <div className="grid grid-cols-3">
           <span className="font-bold">NISN</span>
           <span className="col-span-2">: {student.nisn}</span>
+        </div>
+        <div className="grid grid-cols-3">
+          <span className="font-bold">JK</span>
+          <span className="col-span-2">: {student.gender === 'L' ? 'Laki-laki' : 'Perempuan'}</span>
         </div>
         <div className="grid grid-cols-3">
           <span className="font-bold">TTL</span>
@@ -226,6 +234,7 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
               <tr>
                 <th className="px-6 py-4">Siswa</th>
                 <th className="px-6 py-4">NISN</th>
+                <th className="px-6 py-4">JK</th>
                 <th className="px-6 py-4">TTL</th>
                 <th className="px-6 py-4">Akses Sistem</th>
                 <th className="px-6 py-4 text-right">Aksi</th>
@@ -238,6 +247,11 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
                     <p className="font-bold text-slate-800">{student.name}</p>
                   </td>
                   <td className="px-6 py-4 text-slate-600 font-medium">{student.nisn}</td>
+                  <td className="px-6 py-4">
+                    <span className={`px-2 py-0.5 rounded text-[10px] font-black ${student.gender === 'L' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-rose-50 text-rose-600 border border-rose-100'}`}>
+                      {student.gender}
+                    </span>
+                  </td>
                   <td className="px-6 py-4 text-slate-500 text-sm">
                     {student.birthPlace}, {student.birthDate}
                   </td>
@@ -348,6 +362,18 @@ const StudentManagement: React.FC<StudentManagementProps> = ({ students, setting
                   value={formData.nisn}
                   onChange={(e) => setFormData({...formData, nisn: e.target.value})}
                 />
+              </div>
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest px-1">Jenis Kelamin</label>
+                <select
+                  required
+                  className="w-full px-5 py-3 border border-slate-200 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all font-bold bg-white"
+                  value={formData.gender}
+                  onChange={(e) => setFormData({...formData, gender: e.target.value as 'L' | 'P'})}
+                >
+                  <option value="L">Laki-laki</option>
+                  <option value="P">Perempuan</option>
+                </select>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">

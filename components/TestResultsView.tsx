@@ -33,6 +33,7 @@ const TestResultsView: React.FC<TestResultsViewProps> = ({ sessions, packages, s
     r.nisn.includes(searchTerm)
   );
 
+  // Fix: Improved Array check for correctAns and userAns to resolve union type property errors.
   const getQuestionResult = (q: Question, userAns: any) => {
     const isBinary = [QuestionType.TRUE_FALSE, QuestionType.AGREE_DISAGREE, QuestionType.YES_NO, QuestionType.MATCH_UNMATCH].includes(q.type);
     const maxScore = q.type === QuestionType.MCSA ? 1 : q.type === QuestionType.MCMA ? 2 : 3;
@@ -49,25 +50,28 @@ const TestResultsView: React.FC<TestResultsViewProps> = ({ sessions, packages, s
     }
     
     if (q.type === QuestionType.MCMA) {
-      const u = (userAns as number[]) || [];
-      const c = (correctAns as number[]) || [];
+      const u = Array.isArray(userAns) ? userAns : [];
+      const c = Array.isArray(correctAns) ? correctAns : [];
       if (u.length === 0) return { score: 0, maxScore: 2, level: 'unanswered' };
       const correctMatches = u.filter(x => c.includes(x)).length;
       const incorrectMatches = u.filter(x => !c.includes(x)).length;
       if (u.length === c.length && correctMatches === c.length) return { score: 2, maxScore: 2, level: 'correct' };
-      const rawScore = ((correctMatches - incorrectMatches) / c.length) * 2;
+      // Fix: Ensure division by zero check and array length safety.
+      const rawScore = c.length > 0 ? ((correctMatches - incorrectMatches) / c.length) * 2 : 0;
       const finalScore = Math.max(0, Number(rawScore.toFixed(2)));
       return { score: finalScore, maxScore: 2, level: finalScore >= 2 ? 'correct' : finalScore > 0 ? 'partial' : 'incorrect' };
     }
 
-    const u = (userAns as number[]) || [];
-    const c = (correctAns as number[]) || [];
+    const u = Array.isArray(userAns) ? userAns : [];
+    const c = Array.isArray(correctAns) ? correctAns : [];
     const totalItems = c.length;
     if (u.length === 0) return { score: 0, maxScore: 3, level: 'unanswered' };
     let correctCount = 0;
+    // Fix: Using Array.isArray ensures c[i] is accessible.
     u.forEach((val, i) => { if (val === c[i]) correctCount++; });
     if (correctCount === totalItems) return { score: 3, maxScore: 3, level: 'correct' };
-    const finalScore = Math.max(0, Number(((correctCount / totalItems) * 3).toFixed(2)));
+    // Fix: Added safety check for totalItems division.
+    const finalScore = totalItems > 0 ? Math.max(0, Number(((correctCount / totalItems) * 3).toFixed(2))) : 0;
     return { score: finalScore, maxScore: 3, level: finalScore >= 3 ? 'correct' : finalScore > 0 ? 'partial' : 'incorrect' };
   };
 
@@ -114,13 +118,14 @@ const TestResultsView: React.FC<TestResultsViewProps> = ({ sessions, packages, s
 
       if (binary && Array.isArray(userAns)) {
         displayUserAns = userAns.map((val, i) => `${i + 1}:${val === 0 ? labels?.h1 : labels?.h2}`).join(',');
-        displayCorrectAns = (q.correctAnswer as number[]).map((val, i) => `${i + 1}:${val === 0 ? labels?.h1 : labels?.h2}`).join(',');
+        displayCorrectAns = Array.isArray(q.correctAnswer) ? (q.correctAnswer as number[]).map((val, i) => `${i + 1}:${val === 0 ? labels?.h1 : labels?.h2}`).join(',') : '-';
       } else if (q.type === QuestionType.MCMA && Array.isArray(userAns)) {
         displayUserAns = userAns.map(i => String.fromCharCode(65 + i)).join(',');
-        displayCorrectAns = (q.correctAnswer as number[]).map(i => String.fromCharCode(65 + i)).join(',');
+        displayCorrectAns = Array.isArray(q.correctAnswer) ? (q.correctAnswer as number[]).map(i => String.fromCharCode(65 + i)).join(',') : '-';
       } else {
-        displayUserAns = userAns !== undefined ? String.fromCharCode(65 + (userAns as number)) : '-';
-        displayCorrectAns = String.fromCharCode(65 + (q.correctAnswer as number));
+        // Fix: Added safety check to ensure index type is number and q.correctAnswer is not number[]
+        displayUserAns = userAns !== undefined && !Array.isArray(userAns) ? String.fromCharCode(65 + (userAns as number)) : '-';
+        displayCorrectAns = !Array.isArray(q.correctAnswer) ? String.fromCharCode(65 + (q.correctAnswer as number)) : '-';
       }
 
       return `
@@ -424,30 +429,30 @@ const TestResultsView: React.FC<TestResultsViewProps> = ({ sessions, packages, s
                                 <div className="space-y-1">
                                   {q.options.map((opt, oIdx) => (
                                     <div key={oIdx} className={`text-xs font-bold flex justify-between p-2 rounded-lg border ${
-                                      userAns?.[oIdx] === (q.correctAnswer as number[])[oIdx] 
+                                      Array.isArray(userAns) && Array.isArray(q.correctAnswer) && userAns[oIdx] === (q.correctAnswer as number[])[oIdx] 
                                       ? 'bg-emerald-50 border-emerald-100 text-emerald-700' 
-                                      : userAns?.[oIdx] === undefined ? 'bg-white border-slate-200 text-slate-400' : 'bg-red-50 border-red-100 text-red-700'
+                                      : Array.isArray(userAns) && userAns[oIdx] === undefined ? 'bg-white border-slate-200 text-slate-400' : 'bg-red-50 border-red-100 text-red-700'
                                     }`}>
                                       <span>{oIdx + 1}. {opt.length > 20 ? opt.substring(0, 20) + '...' : opt}</span>
-                                      <span className="font-black">{userAns?.[oIdx] === 0 ? getBinaryLabels(q.type).h1 : userAns?.[oIdx] === 1 ? getBinaryLabels(q.type).h2 : '-'}</span>
+                                      <span className="font-black">{Array.isArray(userAns) && userAns[oIdx] === 0 ? getBinaryLabels(q.type).h1 : Array.isArray(userAns) && userAns[oIdx] === 1 ? getBinaryLabels(q.type).h2 : '-'}</span>
                                     </div>
                                   ))}
                                 </div>
                               ) : q.type === QuestionType.MCMA ? (
                                 <div className="flex flex-wrap gap-2">
-                                  {((userAns as number[]) || []).map(idx => (
+                                  {Array.isArray(userAns) && ((userAns as number[]) || []).map(idx => (
                                     <span key={idx} className={`w-8 h-8 rounded-lg flex items-center justify-center font-black shadow-sm ${
-                                      (q.correctAnswer as number[]).includes(idx) ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
+                                      Array.isArray(q.correctAnswer) && (q.correctAnswer as number[]).includes(idx) ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
                                     }`}>{String.fromCharCode(65 + idx)}</span>
                                   ))}
-                                  {(!userAns || userAns.length === 0) && <span className="text-slate-400 italic">Tidak ada jawaban</span>}
+                                  {(!userAns || !Array.isArray(userAns) || userAns.length === 0) && <span className="text-slate-400 italic">Tidak ada jawaban</span>}
                                 </div>
                               ) : (
                                 <div className="flex items-center gap-3">
                                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black shadow-md ${
-                                     userAns === q.correctAnswer ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
-                                   }`}>{userAns !== undefined ? String.fromCharCode(65 + userAns) : '-'}</div>
-                                   <p className="text-sm font-bold text-slate-700">{userAns !== undefined ? q.options[userAns] : '-'}</p>
+                                     !Array.isArray(userAns) && userAns === q.correctAnswer ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
+                                   }`}>{userAns !== undefined && !Array.isArray(userAns) ? String.fromCharCode(65 + (userAns as number)) : '-'}</div>
+                                   <p className="text-sm font-bold text-slate-700">{userAns !== undefined && !Array.isArray(userAns) ? q.options[userAns as number] : '-'}</p>
                                 </div>
                               )}
                             </div>
@@ -460,20 +465,20 @@ const TestResultsView: React.FC<TestResultsViewProps> = ({ sessions, packages, s
                                   {q.options.map((opt, oIdx) => (
                                     <div key={oIdx} className="text-xs font-bold text-slate-700 flex justify-between bg-emerald-50 p-2 rounded-lg border border-emerald-100">
                                       <span>{oIdx + 1}. {opt.length > 20 ? opt.substring(0, 20) + '...' : opt}</span>
-                                      <span className="text-emerald-700 font-black">{(q.correctAnswer as number[])[oIdx] === 0 ? getBinaryLabels(q.type).h1 : getBinaryLabels(q.type).h2}</span>
+                                      <span className="text-emerald-700 font-black">{Array.isArray(q.correctAnswer) && (q.correctAnswer as number[])[oIdx] === 0 ? getBinaryLabels(q.type).h1 : getBinaryLabels(q.type).h2}</span>
                                     </div>
                                   ))}
                                 </div>
                               ) : q.type === QuestionType.MCMA ? (
                                 <div className="flex flex-wrap gap-2">
-                                  {((q.correctAnswer as number[]) || []).map(idx => (
+                                  {Array.isArray(q.correctAnswer) && ((q.correctAnswer as number[]) || []).map(idx => (
                                     <span key={idx} className="bg-emerald-500 text-white w-8 h-8 rounded-lg flex items-center justify-center font-black shadow-sm">{String.fromCharCode(65 + idx)}</span>
                                   ))}
                                 </div>
                               ) : (
                                 <div className="flex items-center gap-3">
-                                   <div className="bg-emerald-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-black shadow-md">{String.fromCharCode(65 + (q.correctAnswer as number))}</div>
-                                   <p className="text-sm font-bold text-slate-700">{q.options[q.correctAnswer as number]}</p>
+                                   <div className="bg-emerald-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-black shadow-md">{!Array.isArray(q.correctAnswer) ? String.fromCharCode(65 + (q.correctAnswer as number)) : '-'}</div>
+                                   <p className="text-sm font-bold text-slate-700">{!Array.isArray(q.correctAnswer) ? q.options[q.correctAnswer as number] : '-'}</p>
                                 </div>
                               )}
                             </div>

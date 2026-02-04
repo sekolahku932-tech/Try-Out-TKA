@@ -3,15 +3,15 @@ import { initializeApp, getApp, getApps, FirebaseApp } from "firebase/app";
 import { getFirestore, Firestore } from "firebase/firestore";
 import { FirebaseConfig } from "../types";
 
-// Firebase Pusat (Registry)
+// Firebase Pusat (Registry) - Updated with new Database Config
 const centralConfig = {
-  apiKey: "AIzaSyD60xL075kRNG9FKHJjsLei_uUerM9jo0M",
-  authDomain: "try-out-tka-88b9b.firebaseapp.com",
-  projectId: "try-out-tka-88b9b",
-  storageBucket: "try-out-tka-88b9b.firebasestorage.app",
-  messagingSenderId: "138428840961",
-  appId: "1:138428840961:web:5c9a1a30fd2b4dbdf11400",
-  measurementId: "G-QEY7P6V9QF"
+  apiKey: "AIzaSyCI5YSGf-vZ_X8FfXEpVRa-gEX-nh4wKpo",
+  authDomain: "try-out-tka-a2661.firebaseapp.com",
+  projectId: "try-out-tka-a2661",
+  storageBucket: "try-out-tka-a2661.firebasestorage.app",
+  messagingSenderId: "1053467723023",
+  appId: "1:1053467723023:web:9efd35fc9899cb0a73ea7a",
+  measurementId: "G-0TP0G3HB62"
 };
 
 // Inisialisasi App Pusat
